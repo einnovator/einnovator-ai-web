@@ -26,6 +26,32 @@ test("homepage communicates the product and removes starter metadata", async () 
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/);
 });
 
+test("commercial strategy is concrete without weakening self-service", async () => {
+  const [home, enterprise, contact, partners] = await Promise.all([
+    render().then((response) => response.text()),
+    render("/products/pra/enterprise").then((response) => response.text()),
+    render("/company/contact").then((response) => response.text()),
+    render("/design-partners").then((response) => response.text()),
+  ]);
+  assert.match(home, /From measurable opportunity to supported production/);
+  assert.match(home, /From €5K/);
+  assert.match(home, /From €20K/);
+  assert.match(home, /From €10K\/year/);
+  assert.match(enterprise, /Starting at €5,000/);
+  assert.match(enterprise, /Starting at €20,000/);
+  assert.match(enterprise, /4–12 weeks/);
+  assert.match(enterprise, /12 months Standard Support/);
+  assert.match(enterprise, /Evaluation fees may be credited/);
+  assert.match(enterprise, /Self-service remains capable by design/);
+  assert.match(enterprise, /being developed with design partners/);
+  assert.match(enterprise, /negative result is a valid deliverable/i);
+  assert.match(contact, /name="current_models"/);
+  assert.match(contact, /name="inference_engines"/);
+  assert.match(contact, /Prefer not to say/);
+  assert.match(partners, /separate from standard commercial engagements/);
+  assert.doesNotMatch(`${home}${enterprise}`, /PRA saves \d|halves GPU cost|universal savings/i);
+});
+
 test("all launch routes render", async () => {
   const [baseRoutes, engines] = await Promise.all([
     readFile(new URL("../data/routes.json", import.meta.url), "utf8").then(JSON.parse),

@@ -54,7 +54,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const route = (await params).slug.join("/");
   const engine = route.startsWith("products/pra/integrations/") ? getEngine(route.split("/").at(-1) ?? "") : undefined;
   const title = engine ? `PRA for ${engine.name}` : titles[route] ?? "eInnovator";
-  return { title, description: engine ? `${engine.bestFor} Current PRA integration status, deployment modes, requirements, metrics, and qualification gates.` : undefined, alternates: { canonical: `/${route}` } };
+  const enterpriseMetadata = route === "products/pra/enterprise" ? {
+    description: "LLM inference optimization services, long-context workload qualification, production implementation, and enterprise PRA support across vLLM, SGLang, TensorRT-LLM, MLX, and other engines.",
+    keywords: ["LLM inference optimization services", "AI infrastructure optimization", "long-context optimization", "vLLM integration", "SGLang integration", "TensorRT-LLM integration", "MLX integration", "enterprise PRA support"],
+  } : {};
+  return { title, description: engine ? `${engine.bestFor} Current PRA integration status, deployment modes, requirements, metrics, and qualification gates.` : enterpriseMetadata.description, keywords: enterpriseMetadata.keywords, alternates: { canonical: `/${route}` } };
 }
 
 export default async function ContentRoute({ params }: { params: Promise<{ slug: string[] }> }) {

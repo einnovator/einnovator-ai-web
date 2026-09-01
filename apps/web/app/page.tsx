@@ -51,8 +51,14 @@ export default function Home() {
       </section>
 
       <section className="section wrap">
-        <SectionTitle eyebrow="Commercial support" title="Benchmark first. Integrate what earns its place." />
-        <div className="commercial-grid"><article><span>01</span><h3>Optimization Assessment</h3><p>Baseline Full Context, freeze quality criteria, measure Selected Context, and return a reproducible recommendation.</p></article><article><span>02</span><h3>Production Integration</h3><p>Integrate PRA Gateway, the SDK, storage policy, observability, and the qualified engine path.</p></article><article><span>03</span><h3>Enterprise &amp; Engine Support</h3><p>Get private qualification, priority support, and partner engineering for native integration.</p></article></div>
+        <SectionTitle eyebrow="Commercial path" title="From measurable opportunity to supported production." copy="PRA is open source and self-service evaluation is free. eInnovator engagements begin when you want customer-specific qualification, production implementation, enterprise controls, or ongoing support." />
+        <div className="commercial-packages commercial-packages-home">
+          <article><span className="price-label">From €5K</span><h3>Comprehensive Evaluation</h3><p>Turn your workload into a reproducible technical and economic decision.</p><Link href="/company/contact">Request an evaluation <Arrow /></Link></article>
+          <article><span className="price-label">From €20K · typically 4–12 weeks</span><h3>Production Implementation</h3><p>Implement and qualify the winning PRA configuration. Includes 12 months Standard Support for the qualified deployment.</p><Link href="/company/contact">Discuss implementation <Arrow /></Link></article>
+          <article><span className="price-label">Optional</span><h3>Enterprise Control Plane</h3><p>Central policy, qualification history, fleet visibility, and enterprise controls are being developed with design partners.</p><Link href="/products/pra/enterprise#control-plane">Check current availability <Arrow /></Link></article>
+          <article><span className="price-label">From €10K/year</span><h3>Annual Support</h3><p>Keep the deployment qualified as PRA, models, engines, hardware, and workloads evolve.</p><Link href="/products/pra/enterprise#annual-support">Explore enterprise support <Arrow /></Link></article>
+        </div>
+        <div className="commercial-lanes"><div><span>Self-service</span><strong>Measure with open source.</strong><Link className="inline-link" href="/developers/quickstart">Try PRA <Arrow /></Link></div><div><span>Commercial</span><strong>Move from evidence to operating responsibility.</strong><Link className="inline-link" href="/products/pra/enterprise">Compare engagement paths <Arrow /></Link></div></div>
       </section>
 
       <CtaBand />
