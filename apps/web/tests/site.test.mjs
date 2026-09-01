@@ -21,6 +21,7 @@ test("homepage communicates the product and removes starter metadata", async () 
   assert.match(html, /context they need/);
   assert.match(html, /PRA is open source/);
   assert.match(html, /eInnovator/);
+  assert.match(html, /einnovator-logo\.webp/);
   assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/);
 });
@@ -68,17 +69,21 @@ test("homepage internal links resolve", async () => {
   const html = await response.text();
   const links = [...html.matchAll(/href="(\/[^"#?]*)/g)].map((match) => match[1]);
   for (const path of new Set(links)) {
-    if (path.startsWith("/_next") || path === "/og.png") continue;
+    if (path.startsWith("/_next") || /\.(?:png|webp|css|js)$/i.test(path)) continue;
     const linked = await render(path);
     assert.ok(linked.status < 400, `${path} returned ${linked.status}`);
   }
 });
 
-test("social image and public documentation seam exist", async () => {
-  const [og, product] = await Promise.all([
+test("brand and social images and public documentation seam exist", async () => {
+  const [logo, og, product] = await Promise.all([
+    readFile(new URL("../public/einnovator-logo.webp", import.meta.url)),
     readFile(new URL("../public/og.png", import.meta.url)),
     readFile(new URL("../data/products.json", import.meta.url), "utf8"),
   ]);
+  assert.equal(logo.subarray(0, 4).toString("ascii"), "RIFF");
+  assert.equal(logo.subarray(8, 12).toString("ascii"), "WEBP");
+  assert.ok(logo.length > 4_000);
   assert.ok(og.length > 100_000);
   assert.match(product, /https:\/\/github\.com\/einnovator\/pdattention/);
   assert.doesNotMatch(product, /file:\/\/\//i);

@@ -40,7 +40,7 @@ test("the static export contains every public route", async () => {
 
 test("static HTML references copied assets and resolvable internal pages", async () => {
   const html = await readFile(pageFile("/"), "utf8");
-  const assetLinks = [...html.matchAll(/(?:href|src)="(\/_next\/[^"?]+|\/static\.js|\/og\.png)"/g)]
+  const assetLinks = [...html.matchAll(/(?:href|src)="(\/_next\/[^"?]+|\/static\.js|\/og\.png|\/einnovator-logo\.webp)"/g)]
     .map((match) => match[1]);
   assert.ok(assetLinks.some((link) => link.endsWith(".css")));
   assert.ok(assetLinks.includes("/static.js"));
@@ -51,7 +51,7 @@ test("static HTML references copied assets and resolvable internal pages", async
 
   const internalLinks = [...html.matchAll(/href="(\/[^"#?]*)/g)]
     .map((match) => match[1])
-    .filter((link) => !link.startsWith("/_next") && link !== "/og.png");
+    .filter((link) => !link.startsWith("/_next") && !/\.(?:png|webp|css|js)$/i.test(link));
   for (const route of new Set(internalLinks)) {
     await access(pageFile(route));
   }

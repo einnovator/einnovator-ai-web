@@ -11,7 +11,9 @@ export function Header() {
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="nav-shell">
         <Link className="brand" href="/" aria-label="eInnovator home">
-          <span className="brand-mark" aria-hidden="true">e<span>i</span></span>
+          {/* A direct asset URL keeps the logo working in the browser-only offline export. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="brand-mark" src="/einnovator-logo.webp" width="38" height="38" alt="" aria-hidden="true" />
           <span>eInnovator</span>
         </Link>
         <nav className="main-nav" aria-label="Main navigation">
@@ -50,7 +52,9 @@ export function Footer() {
       <div className="footer-top">
         <div>
           <Link className="brand footer-brand" href="/">
-            <span className="brand-mark" aria-hidden="true">e<span>i</span></span>
+            {/* A direct asset URL keeps the logo working in the browser-only offline export. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="brand-mark" src="/einnovator-logo.webp" width="38" height="38" alt="" aria-hidden="true" />
             <span>eInnovator</span>
           </Link>
           <p>Efficient AI infrastructure, from research to production.</p>
