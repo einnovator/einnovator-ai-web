@@ -300,6 +300,24 @@ dd { margin: 7px 0 0; line-height: 1.5; }
 .feature-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .feature-cards article { min-height: 160px; padding: 24px; border: 1px solid var(--line); background: white; }
 .honesty-note { margin-top: 28px; padding: 18px; border-left: 3px solid var(--orange); background: #fff4ed; color: #704226; }
+.risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
+.risk-grid article { min-height: 220px; padding: 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; }
+.risk-grid article:nth-child(3n) { border-right: 0; }
+.risk-grid article:nth-last-child(-n+3) { border-bottom: 0; }
+.risk-grid h3 { margin-top: 0; }
+.risk-grid p { color: var(--muted); font-size: 14px; }
+.engagement-steps { border-top: 1px solid var(--line); }
+.engagement-steps article { display: grid; grid-template-columns: 90px 1fr; gap: 24px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+.engagement-steps article > span { color: var(--orange); font-family: var(--mono); font-size: 12px; }
+.engagement-steps h3 { margin-top: 0; font-size: 24px; }
+.engagement-steps p { margin-bottom: 0; max-width: 780px; color: var(--muted); }
+.engagement-steps.compact { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--line); }
+.engagement-steps.compact article { grid-template-columns: 50px 1fr; padding: 28px; background: white; }
+.engagement-steps.compact article:nth-child(odd) { border-right: 1px solid var(--line); }
+.offer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.offer-grid article { min-height: 285px; padding: 26px; border: 1px solid var(--line); background: white; }
+.offer-grid h3 { margin-top: 26px; font-size: 23px; }
+.offer-grid p { color: var(--muted); font-size: 14px; }
 .service-list { border-top: 1px solid var(--line); }
 .service-list article { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding: 44px 0; border-bottom: 1px solid var(--line); }
 .service-list > article > span { color: var(--orange); font-family: var(--mono); }
@@ -372,6 +390,10 @@ dd { margin: 7px 0 0; line-height: 1.5; }
   .hero-system { max-width: 650px; transform: none; }
   .engine-grid { grid-template-columns: repeat(2, 1fr); }
   .deployment-grid, .feature-cards { grid-template-columns: repeat(2, 1fr); }
+  .risk-grid, .offer-grid { grid-template-columns: repeat(2, 1fr); }
+  .risk-grid article:nth-child(3n) { border-right: 1px solid var(--line); }
+  .risk-grid article:nth-child(even) { border-right: 0; }
+  .risk-grid article:nth-last-child(3) { border-bottom: 1px solid var(--line); }
   .mode-cards { grid-template-columns: 1fr; }
   .evidence-levels { grid-template-columns: repeat(2, 1fr); }
   .metric-placeholders { grid-template-columns: repeat(3, 1fr); }
@@ -403,6 +425,11 @@ dd { margin: 7px 0 0; line-height: 1.5; }
   .level-track > i { width: 1px; height: 20px; }
   .level-track article { width: 100%; }
   .deployment-grid, .feature-cards, .evidence-levels, .chooser-grid, .metric-placeholders { grid-template-columns: 1fr; }
+  .risk-grid, .offer-grid, .engagement-steps.compact { grid-template-columns: 1fr; }
+  .risk-grid article { border-right: 0 !important; border-bottom: 1px solid var(--line) !important; }
+  .risk-grid article:last-child { border-bottom: 0 !important; }
+  .engagement-steps.compact article:nth-child(odd) { border-right: 0; }
+  .engagement-steps article { grid-template-columns: 48px 1fr; }
   .compatibility-flow { grid-template-columns: 1fr; }
   .compatibility-flow > i { transform: rotate(90deg); justify-self: center; }
   .benefit-checks { grid-template-columns: 1fr; }

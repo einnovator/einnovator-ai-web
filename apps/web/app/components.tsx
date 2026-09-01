@@ -27,6 +27,7 @@ export function Header() {
               <Link href="/products/pra/context"><strong>PRA Context</strong><span>Send selected ordinary context to an existing model server.</span></Link>
               <Link href="/products/pra/native-memory"><strong>PRA Native Memory</strong><span>Reuse selected resources as qualified model-native memory.</span></Link>
               <Link href="/products/pra/native-serving"><strong>PRA Native Serving</strong><span>Coordinate residency, prefetch, placement, and eviction.</span></Link>
+              <Link href="/products/pra/enterprise"><strong>Enterprise</strong><span>Assessment, integration, support, and engine partnerships.</span></Link>
             </div>
           </details>
           <Link href="/solutions/long-context">Solutions</Link>

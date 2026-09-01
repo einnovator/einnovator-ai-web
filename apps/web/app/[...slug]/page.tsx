@@ -6,9 +6,6 @@ import {
   AboutPage,
   AgentPage,
   ContactPage,
-  DesignPartnersPage,
-  EnterprisePage,
-  GatewayPage,
   LegalPage,
   ProductsPage,
   ProfilesPage,
@@ -17,6 +14,7 @@ import {
   ResearchPage,
   SolutionPage,
 } from "../content-pages";
+import { DesignPartnersReworkedPage, EnterpriseReworkedPage, GatewayReworkedPage } from "../enterprise-pages";
 import { BenchmarksReworkedPage } from "../benchmark-page";
 import { EngineReworkedPage, IntegrationsReworkedPage } from "../engine-pages";
 import { ArchitectureReworkedPage, ContextPage, NativeMemoryPage, NativeServingPage, PraOverviewPage } from "../pra-modes";
@@ -77,14 +75,14 @@ export default async function ContentRoute({ params }: { params: Promise<{ slug:
     return engine ? <EngineReworkedPage engine={engine} /> : notFound();
   }
   if (route === "products/pra/agent") return <AgentPage />;
-  if (route === "products/pra/gateway") return <GatewayPage />;
-  if (route === "products/pra/enterprise") return <EnterprisePage />;
+  if (route === "products/pra/gateway") return <GatewayReworkedPage />;
+  if (route === "products/pra/enterprise") return <EnterpriseReworkedPage />;
   if (route === "developers/quickstart") return <QuickstartPage />;
   if (route === "research" || route === "research/c5") return <ResearchPage />;
   if (route === "research/publications") return <PublicationsPage />;
   if (route === "company/about") return <AboutPage />;
   if (route === "company/contact") return <ContactPage />;
-  if (route === "design-partners") return <DesignPartnersPage />;
+  if (route === "design-partners") return <DesignPartnersReworkedPage />;
   if (route.startsWith("solutions/")) return <SolutionPage slug={route.split("/").at(-1) ?? "long-context"} />;
   if (route === "legal/privacy") return <LegalPage kind="privacy" />;
   if (route === "legal/terms") return <LegalPage kind="terms" />;
