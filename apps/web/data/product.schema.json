@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "eInnovator product registry",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "tagline", "summary", "status", "hero", "features", "integrations", "benchmarks", "docs_url", "github_url", "cta"],
+    "additionalProperties": false
+  }
+}

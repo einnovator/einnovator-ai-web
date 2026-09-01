@@ -1,0 +1,16 @@
+[
+  {
+    "id": "pra",
+    "name": "PRA",
+    "tagline": "Run long-context AI with less active context.",
+    "summary": "An open-source context and inference optimization layer for AI agents and open models.",
+    "status": "Available",
+    "hero": "Keep reusable documents, tools, task state, and other context outside the active prompt, then materialize only what the model needs.",
+    "features": ["Typed semantic records", "Sparse routing and materialization", "Gateway-first adoption", "Native engine research"],
+    "integrations": ["hugging-face", "vllm", "sglang", "mlx", "openvino", "tensorrt-llm", "airllm"],
+    "benchmarks": ["controlled-native-kv", "qwen-router", "pra-off-parity"],
+    "docs_url": "file:///D:/git/rd/pdattention/site/index.html",
+    "github_url": "https://github.com/einnovator/pdattention",
+    "cta": "/developers/quickstart"
+  }
+]

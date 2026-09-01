@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRA website benchmark export",
+  "description": "Missing values must be explicit strings such as Not measured; numeric zero must never stand in for missing evidence.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "model", "engine", "hardware", "profile", "workload", "quality", "qualityDelta", "visibleReduction", "activeKvReduction", "ttft", "memory", "status", "evidence", "source"],
+    "additionalProperties": false
+  }
+}
