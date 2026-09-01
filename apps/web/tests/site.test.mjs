@@ -17,8 +17,8 @@ test("homepage communicates the product and removes starter metadata", async () 
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Run long-context AI with/);
-  assert.match(html, /less active context/);
+  assert.match(html, /Give AI models only the/);
+  assert.match(html, /context they need/);
   assert.match(html, /PRA is open source/);
   assert.match(html, /eInnovator/);
   assert.match(html, /og\.png/);

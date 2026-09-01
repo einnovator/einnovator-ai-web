@@ -5,7 +5,6 @@ import routes from "@/data/routes.json";
 import {
   AboutPage,
   AgentPage,
-  ArchitecturePage,
   BenchmarksPage,
   ContactPage,
   DesignPartnersPage,
@@ -14,7 +13,6 @@ import {
   GatewayPage,
   IntegrationsPage,
   LegalPage,
-  PraOverview,
   ProductsPage,
   ProfilesPage,
   PublicationsPage,
@@ -22,6 +20,7 @@ import {
   ResearchPage,
   SolutionPage,
 } from "../content-pages";
+import { ArchitectureReworkedPage, ContextPage, NativeMemoryPage, NativeServingPage, PraOverviewPage } from "../pra-modes";
 
 export function generateStaticParams() {
   return [...routes.filter((route) => route !== "/"), ...engines.map((engine) => `/products/pra/integrations/${engine.slug}`)].map((route) => ({ slug: route.slice(1).split("/") }));
@@ -31,6 +30,9 @@ const titles: Record<string, string> = {
   products: "Products",
   "products/pra": "PRA context and inference optimization",
   "products/pra/architecture": "PRA architecture",
+  "products/pra/context": "PRA Selected Context",
+  "products/pra/native-memory": "PRA Native Memory",
+  "products/pra/native-serving": "PRA Native Serving",
   "products/pra/benchmarks": "PRA benchmarks",
   "products/pra/profiles": "PRA optimization profiles",
   "products/pra/integrations": "PRA engine integrations",
@@ -63,8 +65,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ContentRoute({ params }: { params: Promise<{ slug: string[] }> }) {
   const route = (await params).slug.join("/");
   if (route === "products") return <ProductsPage />;
-  if (route === "products/pra") return <PraOverview />;
-  if (route === "products/pra/architecture") return <ArchitecturePage />;
+  if (route === "products/pra") return <PraOverviewPage />;
+  if (route === "products/pra/architecture") return <ArchitectureReworkedPage />;
+  if (route === "products/pra/context") return <ContextPage />;
+  if (route === "products/pra/native-memory") return <NativeMemoryPage />;
+  if (route === "products/pra/native-serving") return <NativeServingPage />;
   if (route === "products/pra/benchmarks") return <BenchmarksPage />;
   if (route === "products/pra/profiles") return <ProfilesPage />;
   if (route === "products/pra/integrations") return <IntegrationsPage />;

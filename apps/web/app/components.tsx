@@ -24,6 +24,9 @@ export function Header() {
                   <span>{product.summary}</span>
                 </Link>
               ))}
+              <Link href="/products/pra/context"><strong>PRA Context</strong><span>Send selected ordinary context to an existing model server.</span></Link>
+              <Link href="/products/pra/native-memory"><strong>PRA Native Memory</strong><span>Reuse selected resources as qualified model-native memory.</span></Link>
+              <Link href="/products/pra/native-serving"><strong>PRA Native Serving</strong><span>Coordinate residency, prefetch, placement, and eviction.</span></Link>
             </div>
           </details>
           <Link href="/solutions/long-context">Solutions</Link>
@@ -52,7 +55,7 @@ export function Footer() {
           <p>Efficient AI infrastructure, from research to production.</p>
         </div>
         <div className="footer-links">
-          <div><strong>Product</strong><Link href="/products/pra">PRA</Link><Link href="/products/pra/integrations">Integrations</Link><Link href="/products/pra/benchmarks">Benchmarks</Link></div>
+          <div><strong>Product</strong><Link href="/products/pra">PRA</Link><Link href="/products/pra/context">Selected Context</Link><Link href="/products/pra/native-memory">Native Memory</Link><Link href="/products/pra/native-serving">Native Serving</Link></div>
           <div><strong>Build</strong><Link href="/developers/quickstart">Quickstart</Link><a href={localDocsUrl}>Documentation</a><a href={githubUrl}>GitHub</a></div>
           <div><strong>Company</strong><Link href="/company/about">About</Link><Link href="/research">Research</Link><Link href="/design-partners">Design partners</Link></div>
           <div><strong>Trust</strong><Link href="/legal/security">Security</Link><Link href="/legal/privacy">Privacy</Link><Link href="/legal/terms">Terms</Link></div>
