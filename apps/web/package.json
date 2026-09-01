@@ -9,10 +9,11 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "build:static": "npm run build && node scripts/export-static.mjs",
+    "build:offline": "npm run build:static",
     "start": "vinext start",
     "static:serve": "node scripts/serve-static.mjs",
     "test": "npm run build:static && npm run typecheck && node --test tests/site.test.mjs tests/static-site.test.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern static-site",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern static-site --ignore-pattern offline-site",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

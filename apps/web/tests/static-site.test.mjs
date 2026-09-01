@@ -6,15 +6,16 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const staticRoot = path.join(projectRoot, "static-site");
+const offlineRoot = path.join(projectRoot, "offline-site");
 
 async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(projectRoot, relativePath), "utf8"));
 }
 
-function pageFile(route) {
+function pageFile(route, root = staticRoot) {
   return route === "/"
-    ? path.join(staticRoot, "index.html")
-    : path.join(staticRoot, route.slice(1), "index.html");
+    ? path.join(root, "index.html")
+    : path.join(root, route.slice(1), "index.html");
 }
 
 test("the static export contains every public route", async () => {
@@ -78,4 +79,38 @@ test("static hosting support files are emitted", async () => {
   assert.match(robots, /Sitemap:/);
   assert.match(readme, /static eInnovator website/i);
   assert.ok(og.length > 100_000);
+});
+
+test("offline pages resolve entirely through file-compatible links", async () => {
+  const [baseRoutes, engines] = await Promise.all([
+    readJson("data/routes.json"),
+    readJson("data/engines.json"),
+  ]);
+  const routes = [
+    ...baseRoutes,
+    ...engines.map((engine) => `/products/pra/integrations/${engine.slug}`),
+  ];
+
+  for (const route of routes) {
+    const filename = pageFile(route, offlineRoot);
+    const html = await readFile(filename, "utf8");
+    assert.doesNotMatch(html, /\b(?:href|src|action)=["']\/(?!\/)/i, route);
+
+    const references = [...html.matchAll(/\b(?:href|src|action)=["']([^"']+)["']/gi)]
+      .map((match) => match[1])
+      .filter((value) => !/^(?:[a-z]+:|#|\/\/)/i.test(value));
+    for (const reference of new Set(references)) {
+      const localPath = decodeURIComponent(reference.split(/[?#]/, 1)[0]);
+      if (localPath) await access(path.resolve(path.dirname(filename), localPath));
+    }
+  }
+
+  const [home, readme] = await Promise.all([
+    readFile(pageFile("/", offlineRoot), "utf8"),
+    readFile(path.join(offlineRoot, "README.txt"), "utf8"),
+  ]);
+  assert.match(home, /href="products\/pra\/index\.html"/);
+  assert.match(home, /href="_next\/static\/css\/.+\.css"/);
+  assert.match(home, /src="static\.js"/);
+  assert.match(readme, /no server is required/i);
 });

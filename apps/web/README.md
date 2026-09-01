@@ -24,6 +24,16 @@ Open `http://127.0.0.1:4173` in a browser. The generated site is written to `sta
 
 The original dynamic version remains available through `npm run dev`, `npm run build`, and `npm run start`.
 
+## Browser-only offline version
+
+Create a version that opens directly from the filesystem:
+
+```bash
+npm run build:offline
+```
+
+Then double-click `offline-site/index.html`. It uses file-relative navigation and assets, so no local server is needed. Keep the complete `offline-site` directory together when copying it elsewhere.
+
 ## Validation
 
 ```bash

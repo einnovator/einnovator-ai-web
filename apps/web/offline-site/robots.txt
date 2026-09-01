@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://einnovator.org
+Sitemap: https://einnovator.org/sitemap.xml

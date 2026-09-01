@@ -17,3 +17,5 @@ npm run static:serve
 ```
 
 Then open `http://127.0.0.1:4173`. The dynamic application remains available and unchanged through its existing `dev`, `build`, and `start` scripts.
+
+For a browser-only version that needs no server, run `npm run build:offline` in `apps/web`, then double-click `apps/web/offline-site/index.html`.
