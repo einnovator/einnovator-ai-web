@@ -5,7 +5,7 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["id", "model", "engine", "hardware", "profile", "workload", "quality", "qualityDelta", "visibleReduction", "activeKvReduction", "ttft", "memory", "status", "evidence", "source"],
+    "required": ["id", "stage", "metric", "value", "comparison", "quality", "model", "engine", "engineVersion", "hardware", "workload", "status", "evidence", "provenance", "date", "methodology", "source"],
     "additionalProperties": false
   }
 }

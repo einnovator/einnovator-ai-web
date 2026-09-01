@@ -5,7 +5,6 @@ import routes from "@/data/routes.json";
 import {
   AboutPage,
   AgentPage,
-  BenchmarksPage,
   ContactPage,
   DesignPartnersPage,
   EnterprisePage,
@@ -18,6 +17,7 @@ import {
   ResearchPage,
   SolutionPage,
 } from "../content-pages";
+import { BenchmarksReworkedPage } from "../benchmark-page";
 import { EngineReworkedPage, IntegrationsReworkedPage } from "../engine-pages";
 import { ArchitectureReworkedPage, ContextPage, NativeMemoryPage, NativeServingPage, PraOverviewPage } from "../pra-modes";
 
@@ -69,7 +69,7 @@ export default async function ContentRoute({ params }: { params: Promise<{ slug:
   if (route === "products/pra/context") return <ContextPage />;
   if (route === "products/pra/native-memory") return <NativeMemoryPage />;
   if (route === "products/pra/native-serving") return <NativeServingPage />;
-  if (route === "products/pra/benchmarks") return <BenchmarksPage />;
+  if (route === "products/pra/benchmarks") return <BenchmarksReworkedPage />;
   if (route === "products/pra/profiles") return <ProfilesPage />;
   if (route === "products/pra/integrations") return <IntegrationsReworkedPage />;
   if (route.startsWith("products/pra/integrations/")) {

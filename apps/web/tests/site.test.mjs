@@ -49,12 +49,12 @@ test("registries keep evidence and missing values explicit", async () => {
   ]);
   assert.ok(products.length >= 1);
   assert.equal(engines.length, 10);
-  assert.ok(benchmarks.length >= 4);
+  assert.ok(benchmarks.length >= 9);
   assert.ok(products.every((row) => row.id && row.name && row.docs_url && row.github_url));
   assert.ok(engines.every((row) => row.compatibility && row.nativeMemory && row.nativeServing && row.recommendedToday));
   assert.ok(engines.every((row) => row.evidence?.status && row.evidence?.provenance && row.evidence?.date && row.evidence?.methodology));
   for (const row of benchmarks) {
-    for (const key of ["quality", "visibleReduction", "activeKvReduction", "ttft", "memory"]) {
+    for (const key of ["value", "quality", "comparison", "provenance", "date", "methodology"]) {
       assert.ok(!["", "0", "0%", "0 ms"].includes(row[key]), `${row.id}.${key}`);
     }
   }

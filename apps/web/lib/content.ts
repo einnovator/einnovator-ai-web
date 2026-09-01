@@ -53,17 +53,27 @@ requireFields("engines", enginesJson, [
 
 requireFields("benchmarks", benchmarksJson, [
   "id",
+  "stage",
+  "metric",
+  "value",
+  "comparison",
   "model",
   "engine",
+  "engineVersion",
+  "hardware",
+  "workload",
   "quality",
   "status",
   "evidence",
+  "provenance",
+  "date",
+  "methodology",
   "source",
 ]);
 
 const missingTokens = new Set(["", "0", "0%", "0 ms"]);
 for (const row of benchmarksJson) {
-  for (const field of ["quality", "visibleReduction", "activeKvReduction", "ttft", "memory"] as const) {
+  for (const field of ["value", "quality", "comparison", "provenance"] as const) {
     if (missingTokens.has(row[field])) {
       throw new Error(`Benchmark ${row.id} uses an ambiguous missing value in ${field}`);
     }
