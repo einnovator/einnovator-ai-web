@@ -59,7 +59,7 @@ Never use zero for a missing metric. Use `Not measured`, `Blocked`, `Candidate`,
 Copy `.env.example` to `.env.local` for local overrides.
 
 - `SITE_URL`: canonical public origin.
-- `DOCS_URL`: PRA documentation URL. The public fallback is the open-source repository.
+- `DOCS_URL`: PRA documentation URL. The public fallback is the canonical PRA technical documentation.
 - `GITHUB_URL`: PRA source repository.
 - `CONTACT_ENDPOINT`: form endpoint; local fallback opens email.
 - `NEXT_PUBLIC_ANALYTICS_SCRIPT_URL`: optional privacy-conscious analytics adapter script. No provider is enabled by default.

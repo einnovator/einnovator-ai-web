@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { githubUrl } from "@/lib/content";
+import { bundleCollectionUrl, githubUrl } from "@/lib/content";
 import { Arrow, CtaBand, EngineGrid, SectionTitle, Status } from "./components";
 
 export default function Home() {
@@ -37,6 +37,16 @@ export default function Home() {
         <div className="wrap">
           <SectionTitle eyebrow="A measured progression" title="Three product paths. One compatibility floor." copy="Selected Context is the baseline. Native Memory and Native Serving are optional qualification paths—not prerequisites." />
           <div className="mode-cards"><article><Status>Available</Status><h3>PRA Context</h3><p>Send selected ordinary text to an existing model server. Benchmark token reduction, quality, latency, throughput, and memory.</p><Link className="inline-link" href="/products/pra/context">Explore compatibility <Arrow /></Link></article><article><Status>Qualification</Status><h3>PRA Native Memory</h3><p>Reuse selected semantic resources as model-native memory when repeated prefill is expensive and the engine has a validated seam.</p><Link className="inline-link" href="/products/pra/native-memory">Understand native reuse <Arrow /></Link></article><article><Status>Partner path</Status><h3>PRA Native Serving</h3><p>Coordinate residency, prefetch, sharing, placement, eviction, and transfer within a serving engine.</p><Link className="inline-link" href="/products/pra/native-serving">Explore serving integration <Arrow /></Link></article></div>
+        </div>
+      </section>
+
+      <section className="section wrap">
+        <SectionTitle eyebrow="Available today" title="Evaluate the complete path before you buy services." copy="The technical site now documents a product workflow from environment inspection and workload qualification through Gateway or Agent deployment, observability, bundles, and conservative serving." />
+        <div className="product-readiness-grid">
+          <article><Status>Available</Status><h3>Qualification CLI</h3><p>Inspect a model/engine pair, import measured evidence, recommend a mode, export a report, and serve the qualified path.</p><Link className="inline-link" href="/developers/quickstart">Run the workflow <Arrow /></Link></article>
+          <article><Status>Available</Status><h3>Gateway and sessions</h3><p>OpenAI-compatible mediation with typed resources, capability negotiation, deltas, streaming, traces, and explicit fallback.</p><Link className="inline-link" href="/products/pra/gateway">Explore the Gateway <Arrow /></Link></article>
+          <article><Status>Available</Status><h3>Agent and typed records</h3><p>Durable sessions, tasks, tools, results, CLI/TUI interaction, and documented boundaries for existing agent frameworks.</p><Link className="inline-link" href="/products/pra/agent">Explore PRA Agent <Arrow /></Link></article>
+          <article><Status>Published</Status><h3>Bundles and evidence</h3><p>Canonical EInnovator bundles package structural maps, optional learned components, profiles, compatibility, and qualification receipts without duplicating base-model weights.</p><a className="inline-link" href={bundleCollectionUrl}>Browse PRA bundles <Arrow /></a></article>
         </div>
       </section>
 

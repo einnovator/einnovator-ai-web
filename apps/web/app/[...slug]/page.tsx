@@ -54,11 +54,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const route = (await params).slug.join("/");
   const engine = route.startsWith("products/pra/integrations/") ? getEngine(route.split("/").at(-1) ?? "") : undefined;
   const title = engine ? `PRA for ${engine.name}` : titles[route] ?? "eInnovator";
+  const routeDescriptions: Record<string, string> = {
+    "developers/quickstart": "Install PRA, inspect a model and engine, evaluate a workload, export a qualification report, and start the open-source Gateway, Agent, or runtime.",
+    "products/pra/gateway": "Open-source PRA Gateway for Selected Context, typed resources, durable sessions, capability negotiation, streaming, traces, and explicit fallback.",
+    "products/pra/agent": "Open-source PRA Agent for durable sessions, tasks, tools, typed context records, CLI/TUI operation, and documented external-agent integration boundaries.",
+  };
   const enterpriseMetadata = route === "products/pra/enterprise" ? {
     description: "LLM inference optimization services, long-context workload qualification, production implementation, and enterprise PRA support across vLLM, SGLang, TensorRT-LLM, MLX, and other engines.",
     keywords: ["LLM inference optimization services", "AI infrastructure optimization", "long-context optimization", "vLLM integration", "SGLang integration", "TensorRT-LLM integration", "MLX integration", "enterprise PRA support"],
   } : {};
-  return { title, description: engine ? `${engine.bestFor} Current PRA integration status, deployment modes, requirements, metrics, and qualification gates.` : enterpriseMetadata.description, keywords: enterpriseMetadata.keywords, alternates: { canonical: `/${route}` } };
+  return { title, description: engine ? `${engine.bestFor} Current PRA integration status, deployment modes, requirements, metrics, and qualification gates.` : enterpriseMetadata.description ?? routeDescriptions[route], keywords: enterpriseMetadata.keywords, alternates: { canonical: `/${route}` } };
 }
 
 export default async function ContentRoute({ params }: { params: Promise<{ slug: string[] }> }) {

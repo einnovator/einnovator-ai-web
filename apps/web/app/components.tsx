@@ -27,6 +27,8 @@ export function Header() {
                 </Link>
               ))}
               <Link href="/products/pra/context"><strong>PRA Context</strong><span>Send selected ordinary context to an existing model server.</span></Link>
+              <Link href="/products/pra/gateway"><strong>PRA Gateway</strong><span>Mediate typed resources, sessions, capabilities, and explicit fallback.</span></Link>
+              <Link href="/products/pra/agent"><strong>PRA Agent</strong><span>Run durable tasks, tools, sessions, and typed records.</span></Link>
               <Link href="/products/pra/native-memory"><strong>PRA Native Memory</strong><span>Reuse selected resources as qualified model-native memory.</span></Link>
               <Link href="/products/pra/native-serving"><strong>PRA Native Serving</strong><span>Coordinate residency, prefetch, placement, and eviction.</span></Link>
               <Link href="/products/pra/enterprise"><strong>Enterprise</strong><span>Assessment, integration, support, and engine partnerships.</span></Link>
@@ -60,7 +62,7 @@ export function Footer() {
           <p>Efficient AI infrastructure, from research to production.</p>
         </div>
         <div className="footer-links">
-          <div><strong>Product</strong><Link href="/products/pra">PRA</Link><Link href="/products/pra/context">Selected Context</Link><Link href="/products/pra/native-memory">Native Memory</Link><Link href="/products/pra/native-serving">Native Serving</Link></div>
+          <div><strong>Product</strong><Link href="/products/pra">PRA</Link><Link href="/products/pra/context">Selected Context</Link><Link href="/products/pra/gateway">Gateway</Link><Link href="/products/pra/agent">Agent</Link><Link href="/products/pra/native-memory">Native Memory</Link><Link href="/products/pra/native-serving">Native Serving</Link></div>
           <div><strong>Build</strong><Link href="/developers/quickstart">Quickstart</Link><a href={localDocsUrl}>Documentation</a><a href={githubUrl}>GitHub</a></div>
           <div><strong>Company</strong><Link href="/company/about">About</Link><Link href="/research">Research</Link><Link href="/design-partners">Design partners</Link></div>
           <div><strong>Trust</strong><Link href="/legal/security">Security</Link><Link href="/legal/privacy">Privacy</Link><Link href="/legal/terms">Terms</Link></div>
@@ -120,7 +122,7 @@ export function CtaBand({ title = "Benchmark PRA on your workload.", copy = "Sta
   return (
     <section className="cta-band wrap">
       <div><p className="eyebrow">A measured adoption path</p><h2>{title}</h2><p>{copy}</p></div>
-      <div className="hero-actions"><Link className="button" href="/design-partners">Become a design partner</Link><Link className="button button-ghost" href="/company/contact">Talk to us</Link></div>
+      <div className="hero-actions"><Link className="button" href="/company/contact">Request an evaluation</Link><Link className="button button-ghost" href="/developers/quickstart">Start self-service</Link></div>
     </section>
   );
 }
@@ -134,5 +136,5 @@ export function Breadcrumbs({ items }: { items: Array<{ label: string; href?: st
 }
 
 export function LocalDocsNote() {
-  return <p className="local-note"><strong>Documentation location:</strong> configure <code>DOCS_URL</code> for the deployment. The public fallback points to the open-source repository.</p>;
+  return <p className="local-note"><strong>Documentation location:</strong> configure <code>DOCS_URL</code> to override the canonical public technical documentation.</p>;
 }

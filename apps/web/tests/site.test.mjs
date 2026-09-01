@@ -52,6 +52,31 @@ test("commercial strategy is concrete without weakening self-service", async () 
   assert.doesNotMatch(`${home}${enterprise}`, /PRA saves \d|halves GPU cost|universal savings/i);
 });
 
+test("commercial claims follow the current technical product surface", async () => {
+  const [home, quickstart, gateway, agent, enterprise] = await Promise.all([
+    render().then((response) => response.text()),
+    render("/developers/quickstart").then((response) => response.text()),
+    render("/products/pra/gateway").then((response) => response.text()),
+    render("/products/pra/agent").then((response) => response.text()),
+    render("/products/pra/enterprise").then((response) => response.text()),
+  ]);
+  assert.match(home, /Available today/);
+  assert.match(home, /Qualification CLI/);
+  for (const command of ["pra doctor", "pra engines", "pra inspect", "pra evaluate", "pra recommend", "pra report", "pra serve", "pra gateway serve"]) {
+    assert.match(quickstart, new RegExp(command));
+  }
+  assert.match(gateway, /Available compatibility boundary/);
+  assert.match(gateway, /selected-context/);
+  assert.match(gateway, /typed-transport/);
+  assert.match(agent, /Available reference application/);
+  assert.match(agent, /pra agent chat/);
+  assert.match(agent, /pra agent run/);
+  assert.match(agent, /Web UI is experimental/);
+  assert.match(enterprise, /pra assess init/);
+  assert.match(enterprise, /One artifact contract/);
+  assert.doesNotMatch(`${home}${quickstart}${gateway}${agent}`, /does not yet expose|commands are not exposed|unreleased gateway/i);
+});
+
 test("all launch routes render", async () => {
   const [baseRoutes, engines] = await Promise.all([
     readFile(new URL("../data/routes.json", import.meta.url), "utf8").then(JSON.parse),
@@ -112,5 +137,6 @@ test("brand and social images and public documentation seam exist", async () => 
   assert.ok(logo.length > 4_000);
   assert.ok(og.length > 100_000);
   assert.match(product, /https:\/\/github\.com\/einnovator\/pdattention/);
+  assert.match(product, /https:\/\/einnovator\.github\.io\/pdattention\/index\.html/);
   assert.doesNotMatch(product, /file:\/\/\//i);
 });

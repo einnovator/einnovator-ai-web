@@ -92,6 +92,13 @@ export function getEngine(slug: string) {
 export const localDocsUrl =
   process.env.DOCS_URL ?? pra.docs_url;
 
+export function praDocsUrl(path = "") {
+  return new URL(path, localDocsUrl).toString();
+}
+
+export const bundleCollectionUrl =
+  "https://huggingface.co/collections/EInnovator/pra-bundles-6a971e52093232f858e660f6";
+
 export const githubUrl =
   process.env.GITHUB_URL ?? pra.github_url;
 

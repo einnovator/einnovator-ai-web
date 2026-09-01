@@ -4,7 +4,7 @@ Commercial website for eInnovator, launching with Progressive Retrieval Attentio
 
 The implementation lives in `apps/web`. Product, engine, and benchmark content is data-driven so future products and integrations can be added without rewriting global navigation or page templates.
 
-PRA documentation links use `DOCS_URL`; the public fallback points to the open-source repository until a dedicated documentation origin is configured.
+PRA documentation links use `DOCS_URL`; the public fallback points to the canonical PRA technical documentation.
 
 See `apps/web/README.md` for development, validation, deployment, and content-editing instructions.
 
