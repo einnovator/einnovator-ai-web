@@ -1,0 +1,8 @@
+[
+  {"type": "Position", "title": "Progressive Retrieval Attention: Demand-Driven Context Expansion", "description": "Foundational interface and falsifiable systems framing.", "href": "https://github.com/einnovator/pdattention/tree/main/docs/papers/paper0_position"},
+  {"type": "Mechanism", "title": "Model-Bounded Sparse Native K/V for Addressable Memory", "description": "Controlled native transport, routing, fragmentation, and logical-context probes.", "href": "https://github.com/einnovator/pdattention/tree/main/docs/papers/paper1_standalone_pra"},
+  {"type": "Models", "title": "Progressive Retrieval Attention for Pretrained Transformers", "description": "Sparse native memory, semantic routing, cross-family behavior, and memory-use adaptation.", "href": "https://github.com/einnovator/pdattention/tree/main/docs/papers/paper2_hf"},
+  {"type": "Serving", "title": "Retrieval-Native Memory for Session-Aware LLM Serving", "description": "Logical identity, residency, prefetch, sharing, and selected-memory attention research.", "href": "https://github.com/einnovator/pdattention/tree/main/docs/papers/paper6_vllm"},
+  {"type": "Records", "title": "Typed Adaptive Context for LLM Agents", "description": "Reversible compression, progressive materialization, and stateful cursors.", "href": "https://github.com/einnovator/pdattention/tree/main/docs/papers/paper7_records"},
+  {"type": "Tasks", "title": "Task-Aware Progressive Retrieval Attention", "description": "Virtualizing interleaved agent context by execution scope.", "href": "https://github.com/einnovator/pdattention/tree/main/docs/papers/paper8_tasks"}
+]

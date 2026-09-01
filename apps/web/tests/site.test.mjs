@@ -38,6 +38,9 @@ test("all launch routes render", async () => {
     const response = await render(route);
     assert.equal(response.status, 200, route);
     assert.match(response.headers.get("content-type") ?? "", /^text\/html/i, route);
+    const html = await response.text();
+    assert.doesNotMatch(html, /file:\/\/\//i, route);
+    assert.doesNotMatch(html, /\bE[0-3]\b/, route);
   }
 });
 
@@ -71,11 +74,12 @@ test("homepage internal links resolve", async () => {
   }
 });
 
-test("social image and local documentation seam exist", async () => {
+test("social image and public documentation seam exist", async () => {
   const [og, product] = await Promise.all([
     readFile(new URL("../public/og.png", import.meta.url)),
     readFile(new URL("../data/products.json", import.meta.url), "utf8"),
   ]);
   assert.ok(og.length > 100_000);
-  assert.match(product, /file:\/\/\/D:\/git\/rd\/pdattention\/site\/index\.html/);
+  assert.match(product, /https:\/\/github\.com\/einnovator\/pdattention/);
+  assert.doesNotMatch(product, /file:\/\/\//i);
 });

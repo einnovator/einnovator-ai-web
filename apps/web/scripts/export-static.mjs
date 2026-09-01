@@ -84,13 +84,17 @@ for (const route of routes) {
   const response = await render(route);
   if (response.status !== 200) throw new Error(`Static export failed for ${route}: HTTP ${response.status}`);
   const html = staticHtml(await response.text());
+  if (/file:\/\/\//i.test(html)) throw new Error(`Static export rejected local file URL on ${route}`);
+  if (/\bE[0-3]\b/.test(html)) throw new Error(`Static export rejected paper-level label on ${route}`);
   const directory = route === "/" ? outputRoot : join(outputRoot, ...route.slice(1).split("/"));
   await mkdir(directory, { recursive: true });
   await writeFile(join(directory, "index.html"), html, "utf8");
 }
 
 const missing = await render("/__static_export_404__");
-await writeFile(join(outputRoot, "404.html"), staticHtml(await missing.text()), "utf8");
+const missingHtml = staticHtml(await missing.text());
+if (/file:\/\/\//i.test(missingHtml)) throw new Error("Static export rejected local file URL on 404 page");
+await writeFile(join(outputRoot, "404.html"), missingHtml, "utf8");
 
 for (const [route, filename, accept] of [
   ["/sitemap.xml", "sitemap.xml", "application/xml"],

@@ -26,3 +26,8 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
+      - name: Reject local filesystem links in public exports
+        run: |
+          if rg -n 'file:///' static-site offline-site; then
+            exit 1
+          fi

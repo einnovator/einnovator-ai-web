@@ -9,7 +9,7 @@
     "features": ["Selected Context", "Native Memory", "Native Serving", "Gateway-first adoption"],
     "integrations": ["hugging-face", "mlx", "vllm", "sglang", "openvino", "tensorrt-llm", "airllm", "llama-cpp", "ollama", "freetoken"],
     "benchmarks": ["controlled-native-kv", "qwen-router", "pra-off-parity"],
-    "docs_url": "file:///D:/git/rd/pdattention/site/index.html",
+    "docs_url": "https://github.com/einnovator/pdattention#readme",
     "github_url": "https://github.com/einnovator/pdattention",
     "cta": "/developers/quickstart"
   }

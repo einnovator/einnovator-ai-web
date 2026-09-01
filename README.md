@@ -4,7 +4,7 @@ Commercial website for eInnovator, launching with Progressive Retrieval Attentio
 
 The implementation lives in `apps/web`. Product, engine, and benchmark content is data-driven so future products and integrations can be added without rewriting global navigation or page templates.
 
-The temporary PRA documentation link points to `D:\git\rd\pdattention\site\index.html`. Set `DOCS_URL` before deployment to replace it with the hosted documentation URL.
+PRA documentation links use `DOCS_URL`; the public fallback points to the open-source repository until a dedicated documentation origin is configured.
 
 See `apps/web/README.md` for development, validation, deployment, and content-editing instructions.
 

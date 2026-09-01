@@ -33,6 +33,8 @@ test("the static export contains every public route", async () => {
     assert.match(html, /<main/, route);
     assert.match(html, /eInnovator/, route);
     assert.doesNotMatch(html, /self\.__next_f|<script[^>]+_next\/static\/chunks/i, route);
+    assert.doesNotMatch(html, /file:\/\/\//i, route);
+    assert.doesNotMatch(html, /\bE[0-3]\b/, route);
   }
 });
 
@@ -62,7 +64,13 @@ test("benchmark filters retain a no-framework static enhancement", async () => {
   ]);
   assert.match(html, /data-engine=/);
   assert.match(html, /data-evidence=/);
+  assert.match(html, /data-stage=/);
+  assert.match(html, /data-model=/);
+  assert.match(html, /data-hardware=/);
+  assert.match(html, /data-workload=/);
+  assert.match(html, /data-metric=/);
   assert.match(script, /addEventListener\("change"/);
+  assert.match(script, /addEventListener\("click"/);
 });
 
 test("static hosting support files are emitted", async () => {
@@ -95,6 +103,8 @@ test("offline pages resolve entirely through file-compatible links", async () =>
     const filename = pageFile(route, offlineRoot);
     const html = await readFile(filename, "utf8");
     assert.doesNotMatch(html, /\b(?:href|src|action)=["']\/(?!\/)/i, route);
+    assert.doesNotMatch(html, /file:\/\/\//i, route);
+    assert.doesNotMatch(html, /\bE[0-3]\b/, route);
 
     const references = [...html.matchAll(/\b(?:href|src|action)=["']([^"']+)["']/gi)]
       .map((match) => match[1])

@@ -4,16 +4,14 @@ import { engines, getEngine } from "@/lib/content";
 import routes from "@/data/routes.json";
 import {
   AboutPage,
-  AgentPage,
   ContactPage,
   LegalPage,
   ProductsPage,
   ProfilesPage,
-  PublicationsPage,
   QuickstartPage,
   ResearchPage,
-  SolutionPage,
 } from "../content-pages";
+import { AgentReworkedPage, PublicationsReworkedPage, SolutionReworkedPage } from "../content-hygiene-pages";
 import { DesignPartnersReworkedPage, EnterpriseReworkedPage, GatewayReworkedPage } from "../enterprise-pages";
 import { BenchmarksReworkedPage } from "../benchmark-page";
 import { EngineReworkedPage, IntegrationsReworkedPage } from "../engine-pages";
@@ -74,16 +72,16 @@ export default async function ContentRoute({ params }: { params: Promise<{ slug:
     const engine = getEngine(route.split("/").at(-1) ?? "");
     return engine ? <EngineReworkedPage engine={engine} /> : notFound();
   }
-  if (route === "products/pra/agent") return <AgentPage />;
+  if (route === "products/pra/agent") return <AgentReworkedPage />;
   if (route === "products/pra/gateway") return <GatewayReworkedPage />;
   if (route === "products/pra/enterprise") return <EnterpriseReworkedPage />;
   if (route === "developers/quickstart") return <QuickstartPage />;
   if (route === "research" || route === "research/c5") return <ResearchPage />;
-  if (route === "research/publications") return <PublicationsPage />;
+  if (route === "research/publications") return <PublicationsReworkedPage />;
   if (route === "company/about") return <AboutPage />;
   if (route === "company/contact") return <ContactPage />;
   if (route === "design-partners") return <DesignPartnersReworkedPage />;
-  if (route.startsWith("solutions/")) return <SolutionPage slug={route.split("/").at(-1) ?? "long-context"} />;
+  if (route.startsWith("solutions/")) return <SolutionReworkedPage slug={route.split("/").at(-1) ?? "long-context"} />;
   if (route === "legal/privacy") return <LegalPage kind="privacy" />;
   if (route === "legal/terms") return <LegalPage kind="terms" />;
   if (route === "legal/security") return <LegalPage kind="security" />;

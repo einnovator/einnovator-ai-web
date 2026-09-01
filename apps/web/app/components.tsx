@@ -130,5 +130,5 @@ export function Breadcrumbs({ items }: { items: Array<{ label: string; href?: st
 }
 
 export function LocalDocsNote() {
-  return <p className="local-note"><strong>Local documentation:</strong> this temporary link opens the generated PRA site at <code>D:\git\rd\pdattention\site</code>. Configure <code>DOCS_URL</code> when it moves.</p>;
+  return <p className="local-note"><strong>Documentation location:</strong> configure <code>DOCS_URL</code> for the deployment. The public fallback points to the open-source repository.</p>;
 }
