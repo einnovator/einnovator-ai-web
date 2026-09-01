@@ -3,7 +3,15 @@ import enginesJson from "@/data/engines.json";
 import benchmarksJson from "@/data/benchmarks.json";
 
 export type Product = (typeof productsJson)[number];
-export type Engine = (typeof enginesJson)[number];
+type EngineRecord = (typeof enginesJson)[number];
+type LegacyEngineShape = {
+  validatedLevel: string;
+  observedLevel: string;
+  deploymentModes: Record<string, string> & { E0: string; E1: string; E2: string; E3: string };
+  tested: Record<string, string>;
+  recommendation: { best: string; useWhen: string; avoidWhen: string; gate: string };
+};
+export type Engine = EngineRecord & LegacyEngineShape;
 export type Benchmark = (typeof benchmarksJson)[number];
 
 function requireFields(
@@ -35,8 +43,10 @@ requireFields("engines", enginesJson, [
   "name",
   "slug",
   "status",
-  "validatedLevel",
-  "observedLevel",
+  "compatibility",
+  "nativeMemory",
+  "nativeServing",
+  "recommendedToday",
   "upstream",
   "github",
 ]);
@@ -61,7 +71,7 @@ for (const row of benchmarksJson) {
 }
 
 export const products = productsJson;
-export const engines = enginesJson;
+export const engines = enginesJson as unknown as Engine[];
 export const benchmarks = benchmarksJson;
 export const pra = products[0];
 

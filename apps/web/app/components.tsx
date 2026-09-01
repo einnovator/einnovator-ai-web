@@ -100,7 +100,7 @@ export function EngineGrid({ limit }: { limit?: number }) {
     <div className="engine-grid">
       {engines.slice(0, limit ?? engines.length).map((engine) => (
         <article className="engine-card" key={engine.id}>
-          <div className="card-top"><Status>{engine.status}</Status><span>{engine.validatedLevel}</span></div>
+          <div className="card-top"><Status>{engine.status}</Status><span>{engine.recommendedToday}</span></div>
           <h3>{engine.name}</h3>
           <p>{engine.bestFor}</p>
           <div className="capability-list">{engine.capabilities.slice(0, 2).map((item) => <span key={item}>{item}</span>)}</div>

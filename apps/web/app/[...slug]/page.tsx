@@ -8,10 +8,8 @@ import {
   BenchmarksPage,
   ContactPage,
   DesignPartnersPage,
-  EnginePage,
   EnterprisePage,
   GatewayPage,
-  IntegrationsPage,
   LegalPage,
   ProductsPage,
   ProfilesPage,
@@ -20,6 +18,7 @@ import {
   ResearchPage,
   SolutionPage,
 } from "../content-pages";
+import { EngineReworkedPage, IntegrationsReworkedPage } from "../engine-pages";
 import { ArchitectureReworkedPage, ContextPage, NativeMemoryPage, NativeServingPage, PraOverviewPage } from "../pra-modes";
 
 export function generateStaticParams() {
@@ -72,10 +71,10 @@ export default async function ContentRoute({ params }: { params: Promise<{ slug:
   if (route === "products/pra/native-serving") return <NativeServingPage />;
   if (route === "products/pra/benchmarks") return <BenchmarksPage />;
   if (route === "products/pra/profiles") return <ProfilesPage />;
-  if (route === "products/pra/integrations") return <IntegrationsPage />;
+  if (route === "products/pra/integrations") return <IntegrationsReworkedPage />;
   if (route.startsWith("products/pra/integrations/")) {
     const engine = getEngine(route.split("/").at(-1) ?? "");
-    return engine ? <EnginePage engine={engine} /> : notFound();
+    return engine ? <EngineReworkedPage engine={engine} /> : notFound();
   }
   if (route === "products/pra/agent") return <AgentPage />;
   if (route === "products/pra/gateway") return <GatewayPage />;
